@@ -1,10 +1,162 @@
-* {
-  margin: 0;
-  padding: 0 auto;
-}
-body {
-
-}
-nav {
-  display: flex;
-}
+.primary-button {
+    border-radius: 16px;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: flex-start;
+    padding: 24px 1px 24px 0;
+    width: 216px;
+    box-sizing: border-box;
+  }
+  .contact-us {
+    overflow-wrap: break-word;
+    font-family: 'Lato';
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 0.75;
+    color: #100E19;
+  }
+  .card-list {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    column-gap: 29px;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+  .bag{
+    backdrop-filter: blur(16px);
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 68.5%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    width: 333px;
+    box-sizing: border-box;
+  }
+  .b1 {
+    margin: 0 241.9px 16px 0;
+    display: inline-block;
+    align-self: center;
+    overflow-wrap: break-word;
+    font-family: 'Lato';
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 1;
+    color: #FFFFFF;
+  }
+  .lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-faucibus-in-libero-risus {
+    overflow-wrap: break-word;
+    font-family: 'Lato';
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 1.333;
+    color: #FFFFFF;
+  }
+  .bag2 {
+    backdrop-filter: blur(16px);
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 68.5%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 412px;
+  }
+  .b2 {
+    margin: 0 248.2px 16px 0;
+    display: inline-block;
+    overflow-wrap: break-word;
+    font-family: 'Lato';
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 1;
+    color: #FFFFFF;
+  }
+  .lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-faucibus-in-libero-risus-1 {
+    overflow-wrap: break-word;
+    font-family: 'Lato';
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 1.333;
+    color: #FFFFFF;
+  }
+  .bag3 {
+    backdrop-filter: blur(16px);
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 68.5%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding-right: 19.7px;
+    width: 359px;
+    box-sizing: border-box;
+  }
+  .b3 {
+    margin: 0 248.2px 16px 0;
+    display: inline-block;
+    align-self: center;
+    overflow-wrap: break-word;
+    font-family: 'Lato';
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 1;
+    color: #FFFFFF;
+  }
+  .lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-faucibus-in-libero-risus-2 {
+    overflow-wrap: break-word;
+    font-family: 'Lato';
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 1.333;
+    color: #FFFFFF;
+  }
+  .bbody {
+    background: #0D0F1B;
+    display: flex;
+    flex-direction: column;
+    padding: 170px 67px 125px 51px;
+    width: 1280px;
+    box-sizing: border-box;
+  }
+  .circle {
+    mix-blend-mode: overlay;
+    filter: blur(100px);
+    position: absolute;
+    top: 83px;
+    right: 0px;
+    width: 608px;
+    height: 606px;
+  }
+  .content {
+    position: relative;
+    margin: 0 14px 149px 14px;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+  .career-craft {
+    margin-bottom: 24px;
+    display: inline-block;
+    align-self: flex-start;
+    overflow-wrap: break-word;
+    font-family: 'Lato';
+    font-weight: 900;
+    font-size: 88px;
+    color: #FFFFFF;
+  }
+  .lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-cursus-imperdiet-sed-id-elementum-quam-vel-aliquam-sit-vulputate-faucibus-nec-gravida-ipsum-pulvinar-vel-non-dui {
+    margin-bottom: 24px;
+    display: inline-block;
+    overflow-wrap: break-word;
+    font-family: 'Lato';
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.333;
+    color: #FFFFFF;
+  }

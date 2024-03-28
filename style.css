@@ -72,6 +72,10 @@ button:hover {
   color: #808080;
   font-size: 12pt;
 }
+.left-para span {
+  color:#3bc4a1;
+  font-weight: 500;
+}
 .btn{
   display: flex;
   justify-content: center;
@@ -83,12 +87,12 @@ button:hover {
   font-weight: 700;
   border-radius: 50px;
   cursor: pointer;
-  transition: all 0.2s ease 0s;
+  transition: all 0.5s ease 0s;
   box-shadow: 1px 5px 10px #3bc4a1;
 }
 .btn:hover {
   letter-spacing: 5px;
-  transition: all .2s ease-in-out;
+  transition: all .5s ease-in-out;
   box-shadow: 5px 5px 20px #3bc4a1;
   width:250px;
 }

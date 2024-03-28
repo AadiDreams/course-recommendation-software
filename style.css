@@ -7,6 +7,7 @@ body {
   color:#273238;
   font-family: 'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;
 }
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -51,6 +52,46 @@ button {
   transition: all 0.3s ease 0s;
 }
 button:hover {
-  background-color: #273238;
+  background-color: #3bc4a1;
   color: #fff;
+}
+
+.main {
+  height: 100vh;
+  padding: 10% 10%;
+  background-image: url('./assets/bg.jpg');
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 600px;
+}
+.left {
+  width:600px;
+}
+.left-para {
+  width: 700px;
+  color: #808080;
+  font-size: 12pt;
+}
+.btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:200px;
+  padding: 10px 10px;
+  background-color: #3bc4a1;
+  color: #fff !important;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
+  box-shadow: 1px 5px 10px #3bc4a1;
+}
+.btn:hover {
+  letter-spacing: 5px;
+  transition: all .2s ease-in-out;
+  box-shadow: 5px 5px 20px #3bc4a1;
+  width:250px;
+}
+.btn a {
+  color:#fff;
 }

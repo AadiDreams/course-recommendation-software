@@ -20,15 +20,7 @@ body {
 .header span {
   color:#3bc4a1
 }
-li,a {
-  font-weight:700;
-  color:#273238;
-  text-decoration: none;
-  transition: all 0.3s ease 0s;
-}
-a:hover {
-  color: #3bc4a1;
-}
+
 nav {
   display: flex;
   justify-content: space-evenly;
@@ -41,17 +33,17 @@ nav {
   display: inline-block;
   padding: 0px 20px;
 }
-button {
+.sign-button {
   padding: 9px 25px;
   background-color: #fff;
   color: #273238;
   font-weight: 700;
   border: none;
-  border-radius: 50px;
+  border-radius: 50px !important;
   cursor: pointer;
   transition: all 0.3s ease 0s;
 }
-button:hover {
+.sign-button:hover {
   background-color: #3bc4a1;
   color: #fff;
 }
@@ -76,7 +68,7 @@ button:hover {
   color:#3bc4a1;
   font-weight: 500;
 }
-.btn{
+.st-btn{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,12 +82,22 @@ button:hover {
   transition: all 0.5s ease 0s;
   box-shadow: 1px 5px 10px #3bc4a1;
 }
-.btn:hover {
+.st-btn:hover {
   letter-spacing: 5px;
   transition: all .5s ease-in-out;
   box-shadow: 5px 5px 20px #3bc4a1;
   width:250px;
 }
-.btn a {
+.st-btn a {
   color:#fff;
+}
+#about {
+  height:100vh;
+  background-color: #f3fbf9;
+  padding: 5% 0px;
+}
+.abt-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

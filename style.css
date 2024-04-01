@@ -120,7 +120,7 @@ nav {
 .feature {
   display: flex;
   flex-direction: column;
-  padding: 8% 10%;
+  padding: 6% 10%;
 }
 .card {
   display: flex;
@@ -136,5 +136,6 @@ nav {
 }
 .ft-img {
   width: 500px;
+  height: 350px;
   border-radius: 20px;
 }

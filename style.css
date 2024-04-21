@@ -7,7 +7,6 @@ body {
   color:#273238;
   font-family: 'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;
 }
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -20,7 +19,6 @@ body {
 .header span {
   color:#3bc4a1
 }
-
 nav {
   display: flex;
   justify-content: space-evenly;
@@ -47,7 +45,6 @@ nav {
   background-color: #3bc4a1;
   color: #fff;
 }
-
 .main {
   height: 100vh;
   padding: 10% 10%;
@@ -139,7 +136,6 @@ nav {
   height: 350px;
   border-radius: 20px;
 }
-
 footer {
   height: 100px;
   padding: 50px 20px;

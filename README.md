@@ -1,5 +1,6 @@
 # course-recommendation-software
 Course Recommendation Software  for Personalized Career Guidance with AI-Powered Insights
+<br>[CareerCraft](https://aadidreams.github.io/course-recommendation-software/)
 > Charting the right engineering course is a crucial decision with 
 significant impact on a student's future career trajectory. Yet, navigating 
 the plethora of options can be daunting, leaving them uncertain about the 

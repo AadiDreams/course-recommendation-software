@@ -1,0 +1,18 @@
+{
+  "name": "loginform",
+  "version": "1.0.0",
+  "description": "Course Recommendation Software  for Personalized Career Guidance with AI-Powered Insights\r > Charting the right engineering course is a crucial decision with \r significant impact on a student's future career trajectory. Yet, navigating \r the plethora of options can be daunting, leaving them uncertain about the \r perfect fit for their individual strengths, interests, and aspirations. To \r bridge this gap, we are developing an innovative engineering course \r recommendation software that leverages cutting-edge Artificial \r Intelligence (AI) to empower students with informed career choices \r perfectly aligned with their unique personality and preferences. By \r fostering informed decision-making and personalized guidance, this \r project empowers individuals to embark on fulfilling and successful \r engineering careers.",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express.js": "^1.0.0",
+    "knex": "^3.1.0",
+    "nodemon": "^3.1.0",
+    "pg": "^8.11.5"
+  }
+}

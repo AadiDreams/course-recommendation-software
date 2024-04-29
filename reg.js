@@ -1,13 +1,34 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
 
-  const firebaseConfig = {
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+
+const firebaseConfig = {
     apiKey: "AIzaSyAGnHliNxthPiirMurAyoo23mJsb7GOYD0",
     authDomain: "career-craft-96422.firebaseapp.com",
     projectId: "career-craft-96422",
     storageBucket: "career-craft-96422.appspot.com",
     messagingSenderId: "562722312371",
     appId: "1:562722312371:web:4504674defbe7d02ace0c6"
-  };
+};
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+
+const submit = document.getElementById('register');
+submit.addEventListener("click",function(event) {
+    event.preventDefault()
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    createUserWithEmailAndPassword(auth, name, email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            alert("Account Created! Please Sign In")
+        })
+        .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage)
+        });
+})

@@ -24,7 +24,7 @@ submit.addEventListener("click",function(event) {
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
-            alert("Account Created! Please Sign In")
+            window.location.href = "signed.html";
         })
         .catch((error) => {
         const errorCode = error.code;

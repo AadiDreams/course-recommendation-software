@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CareerCraft Register</title>
     <link rel="stylesheet" type="text/css" href="login.css">
-    <script src="./script.js"></script>
+    <script type="module" src="./reg.js" defer></script>
 </head>
 <body>
     <div class="right">
@@ -17,11 +17,11 @@
             <br>
             <p>Register your account</p><br>
             <form>
-            <input type="text" placeholder="Name" id="name" class="name"><br>
-            <input type="text" placeholder="Email" id="username" class="username"><br>
-            <input type="password" placeholder="Password" id="password" class="password"><br>
+            <input type="text" placeholder="Name" id="name"><br>
+            <input type="text" placeholder="Email" id="email" required><br>
+            <input type="password" placeholder="Password" id="password" required><br>
             <br>
-            <input type="submit" value="Submit" id="register" class="register-btn">
+            <input type="submit" value="Register" id="register">
             </form>
                 <div class="logbot">
                     <a href="./login.html">sign in</a>

@@ -136,6 +136,50 @@ nav {
   height: 350px;
   border-radius: 20px;
 }
+.contact {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: 'Courgette', cursive;
+  color: #3bc4a1;
+  font-weight: 900;
+}
+input[type="text"] {
+  height:30px;
+  width:300px;
+  border: 1px solid #808080;
+  border-radius: 5px;
+  padding:5px;
+}
+input[type="text"], textarea {
+  border:1px solid #3bc4a1;
+  height: 50px
+}
+textarea {
+  height:100px;
+  width:300px;
+  border-radius: 5px;
+  padding:5px;
+}
+input[type="submit"] {
+  height:30px;
+  width:150px;
+  color:#fff;
+  font-family: 'Courgette', cursive;
+  font-size: 14pt;
+  background: linear-gradient(116.28deg, #1a614f 14.63%, #3bc4a1 91.24%);
+  border:1px solid #808080;
+  box-shadow: 2px 3px 5px #808080;
+  border-radius: 20px;
+  transition: .5s all ease-in-out;
+}
+input[type="submit"]:hover {
+  width:250px;
+  letter-spacing: 5px;
+  background: linear-gradient(116.28deg, #3bc4a1 14.63%, #1a614f 91.24%);
+  transition: .5s all ease-in-out;
+}
 footer {
   height: 100px;
   padding: 50px 20px;

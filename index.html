@@ -42,7 +42,7 @@
                 <li><a href="#">About</a></li>
                 <li><a href="#">FAQ</a></li>
                 <li><a href="#feature">Features</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
         <a class="log" href="./login.html"><button class="sign-button">Sign In</button></a>
@@ -103,8 +103,26 @@
       <div class="card contact-head" id="contact">
         <h1>Contact Us</h1>
       </div>
+
+      <div class="contact">
+        <form action method="get">
+              <label for="name">Name &nbsp;&nbsp;&nbsp;
+                  <input type="text"id="name"name="name" required="required" placeholder="enter your name">
+                  </label><br>
+              </br>
+              <label for="contact_no">Contact &nbsp;
+                  <input type="text"id="contact_no"name="contact_no" required="required" placeholder="enter your number">
+              </label><br><br>
+              <label for="email">Email &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="text"id="email"name="email" required="required" placeholder="enter your email">
+              </label><br><br>
+              <label for="feedback">Feedback 
+                  <textarea required="required" placeholder="enter your feedback"></textarea>
+              </label><br><br><br>
+              <input type="submit"value="submit">
+        </form>
+      </div>
     </div>
-    <br>
     <footer>
        &copy; Copyright 2024
     </footer>

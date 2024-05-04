@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",
+    "ejs": "^3.1.10",
     "express.js": "^1.0.0",
     "knex": "^3.1.0",
     "nodemon": "^3.1.0",

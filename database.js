@@ -3,9 +3,9 @@ const { Client } = require('pg');
 const client = new Client({
     host: "localhost",
     port: 5432,
-    user: "demo1",
-    password: "demo123",
-    database: "demo"
+    user: "ccadmin",
+    password: "ccadmin",
+    database: "careercraft"
 })
 
 client.connect();
@@ -17,9 +17,12 @@ client.on("end", () => {
     console.log("Connection end")
 })
 
-client.query(`select * from users where id=$1`, [1], (err, result) => {
+client.query(`select name from users where id=1;`,(err, result) => {
     if(!err) {
         console.log(result.rows);
+    }
+    else{
+        console.log(err);
     }
     client.end();
 })

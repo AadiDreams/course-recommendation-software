@@ -15,9 +15,8 @@ const db = knex({
 
 const app = express();
 
-// No need for a separate staticPath variable as we're serving from the current directory
 app.use(bodyParser.json());
-app.use(express.static(__dirname));  // Serves static files from current directory
+app.use(express.static(__dirname));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));

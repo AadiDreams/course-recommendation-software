@@ -45,7 +45,9 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-        <a class="log" href="./login.html"><button class="sign-button">Sign In</button></a>
+        <form id="signinForm" action="/signIn" method="get">
+            <button type="submit" class="sign-button">Sign In</button>
+        </form>
     </div>
     <div class="main">
         <h1 class="left">Artificial Intelligence Powered Engineering Course Recommendation Software</h1>
@@ -106,14 +108,14 @@
 
       <div class="contact">
         <form action method="get">
-              <label for="name">Name &nbsp;&nbsp;&nbsp;
+              <label for="name">Name &nbsp;&nbsp;&nbsp;&nbsp;
                   <input type="text"id="name"name="name" required="required" placeholder="enter your name">
                   </label><br>
               </br>
-              <label for="contact_no">Contact &nbsp;
+              <label for="contact_no">Contact &nbsp;&nbsp;
                   <input type="text"id="contact_no"name="contact_no" required="required" placeholder="enter your number">
               </label><br><br>
-              <label for="email">Email &nbsp;&nbsp;&nbsp;&nbsp;
+              <label for="email">Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <input type="text"id="email"name="email" required="required" placeholder="enter your email">
               </label><br><br>
               <label for="feedback">Feedback 

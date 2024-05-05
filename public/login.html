@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerCraft Login</title>
+    <link rel="stylesheet" type="text/css" href="./login.css">
+</head>
+<body>
+    <div class="right">
+        <div class="badge">
+            <p>Welcome back</p>
+        </div>
+        <div class="login">
+            <br>
+            <p>Login your account</p><br>
+            <!-- Changed action and method of the form -->
+            <form action="/login" method="post" id="loginForm">
+                <input type="text" placeholder="Username" id="email" name="email"><br> <!-- Added name attribute -->
+                <input type="password" placeholder="Password" id="password" name="password"><br> <!-- Added name attribute -->
+                <br>
+                <input type="submit" value="Login" id="login">
+            </form>
+            <div class="logbot">
+                <a href="./register.html">create account</a>
+                <br><br>
+                <a href=#><u>Forgot password?</u></a>
+                <br><br>
+            </div>
+        </div>
+    </div>
+    <div class="left">
+        <img src="./assets/log.jpg">
+    </div>
+    <!-- Include log.js script directly in HTML -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAGnHliNxthPiirMurAyoo23mJsb7GOYD0",
+            authDomain: "career-craft-96422.firebaseapp.com",
+            projectId: "career-craft-96422",
+            storageBucket: "career-craft-96422.appspot.com",
+            messagingSenderId: "562722312371",
+            appId: "1:562722312371:web:4504674defbe7d02ace0c6"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const loginForm = document.getElementById('loginForm');
+        loginForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    window.location.href = "signed.html";
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    alert(errorMessage);
+                });
+        });
+    </script>
+</body>
+</html>

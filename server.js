@@ -1,42 +1,45 @@
 const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
-const pg = require('pg');
-const ejs = require('ejs');
-
-const pool = new pg.Pool({
-  user: 'ccadmin',
-  password: 'ccadmin',
-  database: 'careercraft',
-  host: 'localhost',
-  port: 5432
-});
-
-
 const app = express();
-const port = 3000;
+const path = require('path');
+const PORT = process.env.PORT || 3000;
 
-app.use(bodyParser.json());
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'public')));
 
+// Routes
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
-})
-
-app.get('/qa', async (req, res) => {
-  try {
-    const client = await pool.connect();
-    const result = await client.query('SELECT question FROM qs');
-    const questions = result.rows.map(row => row.question);
-    const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
-    await client.release();
-    res.render('qa', { question: randomQuestion });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal Server Error');
-  }
+    res.send('Hello World!');
 });
 
-app.listen(port, (req, res) => {
-  console.log(`Server started on port ${port}`);
-})
+// app.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}`);
+// });
+
+const { Pool } = require('pg');
+
+const pool = new Pool({
+    user: 'ccadmin',
+    host: 'localhost',
+    database: 'careercraft',
+    password: 'ccadmin',
+    port: 5432,
+});
+
+// Example query
+pool.query('SELECT * FROM qs', (err, result) => {
+    if (err) {
+        return console.error('Error executing query', err.stack);
+    }
+    console.log(result.rows);
+    // Process your results here
+});
+
+
+// Serve index.html when the server starts
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});

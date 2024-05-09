@@ -11,3 +11,8 @@ perfectly aligned with their unique personality and preferences. By
 fostering informed decision-making and personalized guidance, this 
 project empowers individuals to embark on fulfilling and successful 
 engineering careers.
+
+> Tech stack
+Front-end: HTML, CSS, JavaScript
+Back-end: Node.js, Express.js, Firebase
+Database: PostgreSQL

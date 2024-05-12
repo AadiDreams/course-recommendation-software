@@ -32,7 +32,9 @@
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
-        <a class="log" href="./index.html"><button class="sign-button">Sign Out</button></a>
+        <form id="logout" action="/logout" method="get">
+          <button type="submit" class="sign-button">Sign Out</button>
+        </form>
     </div>
     <div class="main">
         <h1 class="left"><span>Welcome!</span> to AI Powered Engineering Course Recommendation Software</h1>
@@ -40,7 +42,9 @@
         <p class="left-para">Charting the right engineering course is a crucial decision with significant impact on a student's future career trajectory. Yet, navigating the plethora of options can be daunting, leaving them uncertain about the perfect fit for their individual strengths, interests, and aspirations.</p>
         <p class="left-para">To bridge this gap, here we introduce <span>Career Craft</span> to empower students with informed career choices perfectly aligned with their unique personality and preferences.</p>
         <br><br>
-        <div class="st-btn"><a href="./qa.html">Start</a></div>
+        <form action="/questions" method="get">
+          <button class="st-btn">Start</button>
+        </form>
     </div>
     <div id="about">
         <div class="abt-head">
@@ -54,7 +58,9 @@
         </div>
         <br><br>
         <div class="explore-btn">
-          <div class="st-btn"><a href="./qa.html">Explore now &nbsp;&nbsp; <img src="./assets/arw.png" height="15px"></a></div>
+          <form action="/questions" method="get">
+            <button class="st-btn">Explore now &nbsp;&nbsp; <img src="./assets/arw.png" height="15px"></button>
+          </form>
         </div>
     </div>
     <div class="feature" id="feature">

@@ -74,6 +74,8 @@ nav {
   background-color: #3bc4a1;
   color: #fff !important;
   font-weight: 700;
+  font-size: 15px;
+  border: 0px;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.5s ease 0s;

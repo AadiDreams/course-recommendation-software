@@ -41,7 +41,7 @@ pool.query('SELECT count(*) FROM qs', (err, result) => {
 
 // Serve index.html when the server starts
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'public/index.html'));
   console.log("index page successfull");
 });
 
@@ -50,6 +50,10 @@ app.get('/signIn', (req, res) => {
   console.log("signIn page successfull");
 });
 
+app.get('/register', (req, res) => {
+  res.sendFile(path.join(__dirname, "public/register.html"));
+  console.log("register page successfull");
+});
 
 // Handle login POST request
 app.post('/login', (req, res) => {

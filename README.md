@@ -12,8 +12,7 @@ fostering informed decision-making and personalized guidance, this
 project empowers individuals to embark on fulfilling and successful 
 engineering careers.
 
-Tech stack
-<br>
+<h3>Tech stack</h3>
 Front-end: HTML, CSS, JavaScript
 <br>
 Back-end: Node.js, Express.js, Firebase

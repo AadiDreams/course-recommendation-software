@@ -16,6 +16,6 @@ Tech stack
 <br>
 Front-end: HTML, CSS, JavaScript
 <br>
-Back-end: Node.js, Express.js, Python, Firebase
+Back-end: Node.js, Express.js, Firebase
 <br>
 Database: PostgreSQL

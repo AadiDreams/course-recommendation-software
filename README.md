@@ -18,5 +18,3 @@ Front-end: HTML, CSS, JavaScript
 Back-end: Node.js, Express.js, Firebase
 <br>
 Database: PostgreSQL
-<br>
-Dataset: Hugging Face

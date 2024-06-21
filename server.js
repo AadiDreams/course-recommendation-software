@@ -85,6 +85,38 @@ app.get('/userHome', (req, res) => {
 //   }
 // });
 
+// New endpoint to get questions
+app.get('/api/questions', (req, res) => {
+  pool.query('SELECT question FROM questions', (err, result) => {
+      if (err) {
+          console.error('Error executing query', err.stack);
+          return res.status(500).json({ error: 'Internal server error' });
+      }
+      res.json(result.rows);
+  });
+});
+
+
+
+app.post('/api/submit', (req, res) => {
+  const { firebaseUserId, questionId, rating } = req.body;
+
+  pool.query(
+      'INSERT INTO responses (firebase_user_id, question_id, rating) VALUES ($1, $2, $3)',
+      [firebaseUserId, questionId, rating],
+      (err, result) => {
+          if (err) {
+              console.error('Error executing query', err.stack);
+              res.status(500).send('Error saving response');
+          } else {
+              res.json({ success: true });
+          }
+      }
+  );
+});
+
+
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

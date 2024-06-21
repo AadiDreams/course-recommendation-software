@@ -70,16 +70,16 @@
         <h1 id="qs">Question</h1>
         <br><br><br>
         <div class="box">
-            <div class="value">1</div>
-            <div class="value">2</div>
-            <div class="value">3</div>
-            <div class="value">4</div>
-            <div class="value">5</div>
-            <div class="value">6</div>
-            <div class="value">7</div>
-            <div class="value">8</div>
-            <div class="value">9</div>
-            <div class="value">10</div>
+            <div class="value" data-rating="1">1</div>
+            <div class="value" data-rating="2">2</div>
+            <div class="value" data-rating="3">3</div>
+            <div class="value" data-rating="4">4</div>
+            <div class="value" data-rating="5">5</div>
+            <div class="value" data-rating="6">6</div>
+            <div class="value" data-rating="7">7</div>
+            <div class="value" data-rating="8">8</div>
+            <div class="value" data-rating="9">9</div>
+            <div class="value" data-rating="10">10</div>
         </div>
         <br><br><br>
         <div class="btn">
@@ -87,5 +87,46 @@
         </div>
         <br><br>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let questions = [];
+            let currentQuestionIndex = 0;
+
+            // Function to shuffle the array (Fisher-Yates shuffle)
+            function shuffle(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+            }
+
+            function displayQuestion(index) {
+                const questionElement = document.getElementById('qs');
+                if (index < questions.length) {
+                    questionElement.textContent = questions[index].question;
+                } else {
+                    questionElement.textContent = 'No more questions.';
+                }
+            }
+
+            fetch('/api/questions')
+                .then(response => response.json())
+                .then(data => {
+                    questions = data;
+                    shuffle(questions); // Shuffle the questions array
+                    displayQuestion(currentQuestionIndex);
+                })
+                .catch(error => {
+                    console.error('Error fetching questions:', error);
+                    document.getElementById('qs').textContent = 'Failed to load questions.';
+                });
+
+            document.getElementById('next').addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+                currentQuestionIndex++;
+                displayQuestion(currentQuestionIndex);
+            });
+        });
+    </script>
 </body>
 </html>

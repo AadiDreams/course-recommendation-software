@@ -87,7 +87,7 @@ app.get('/userHome', (req, res) => {
 
 // New endpoint to get questions
 app.get('/api/questions', (req, res) => {
-  pool.query('SELECT question FROM questions', (err, result) => {
+  pool.query('SELECT question_id, question FROM expected', (err, result) => {
       if (err) {
           console.error('Error executing query', err.stack);
           return res.status(500).json({ error: 'Internal server error' });
@@ -97,23 +97,43 @@ app.get('/api/questions', (req, res) => {
 });
 
 
+// Define a function to insert user input into the database
+function insertUserInput(userId, questionIndex, value) {
+  return new Promise((resolve, reject) => {
+      // Perform the database query to insert user input
+      pool.query('INSERT INTO uservalue (userid, questionid, userinput) VALUES ($1, $2, $3)', [userId, questionIndex, value], (err, result) => {
+          if (err) {
+              console.error('Error inserting user input:', err.stack);
+              reject(err);
+          } else {
+              resolve();
+          }
+      });
+  });
+}
 
-// app.post('/api/submit', (req, res) => {
-//   const { firebaseUserId, questionId, rating } = req.body;
 
-//   pool.query(
-//       'INSERT INTO responses (firebase_user_id, question_id, rating) VALUES ($1, $2, $3)',
-//       [firebaseUserId, questionId, rating],
-//       (err, result) => {
-//           if (err) {
-//               console.error('Error executing query', err.stack);
-//               res.status(500).send('Error saving response');
-//           } else {
-//               res.json({ success: true });
-//           }
-//       }
-//   );
-// });
+
+// Assuming this is the endpoint for submitting user input
+app.post('/api/submit', (req, res) => {
+  // Hardcode the user_id
+  const userId = 101;
+
+  // Extract the user input data from the request body
+  const { questionId, value } = req.body;
+
+  // Assuming you have a function to insert data into the database
+  insertUserInput(userId, questionId, value)
+      .then(() => {
+          // Send a success response if the insertion is successful
+          res.json({ success: true });
+      })
+      .catch(error => {
+          // Handle errors appropriately
+          console.error('Error inserting user input:', error);
+          res.status(500).json({ error: 'Internal server error' });
+      });
+});
 
 
 

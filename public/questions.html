@@ -17,14 +17,14 @@
             color: #3bc4a1;
         }
         .header {
-            background-image: url(./assets/bggif.gif);
+            /* background-image: url(./assets/bggif.gif); */
         }
         .qa {
             width: 100%;
             height: 100%;
             flex-direction: column;
             padding: 200px 200px;
-            background-image: url(./assets/bggif.gif);
+            /* background-image: url(./assets/bggif.gif); */
         }
         .box {
             gap: 30px;
@@ -57,6 +57,11 @@
             transition: all .5s ease-in-out;
             cursor: pointer;
         }
+        .selected-value {
+            background-color: #3bc4a1;
+            border: 1px solid #3bc4a1;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -88,45 +93,96 @@
         <br><br>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            let questions = [];
-            let currentQuestionIndex = 0;
-
-            // Function to shuffle the array (Fisher-Yates shuffle)
-            function shuffle(array) {
-                for (let i = array.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]];
-                }
+    document.addEventListener('DOMContentLoaded', function() {
+        let questions = [];
+        let currentQuestionIndex = 0;
+        const userId = 101; // Replace with the actual user ID
+    
+        // Function to shuffle the array (Fisher-Yates shuffle)
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
             }
-
-            function displayQuestion(index) {
-                const questionElement = document.getElementById('qs');
-                if (index < questions.length) {
-                    questionElement.textContent = questions[index].question;
-                } else {
-                    questionElement.textContent = 'No more questions.';
-                }
+        }
+    
+        function displayQuestion(index) {
+            const questionElement = document.getElementById('qs');
+            if (index < questions.length) {
+                questionElement.textContent = questions[index].question;
+            } else {
+                questionElement.textContent = 'No more questions.';
             }
-
-            fetch('/api/questions')
-                .then(response => response.json())
-                .then(data => {
-                    questions = data;
-                    shuffle(questions); // Shuffle the questions array
-                    displayQuestion(currentQuestionIndex);
-                })
-                .catch(error => {
-                    console.error('Error fetching questions:', error);
-                    document.getElementById('qs').textContent = 'Failed to load questions.';
-                });
-
-            document.getElementById('next').addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent the default form submission
-                currentQuestionIndex++;
+        }
+    
+        fetch('/api/questions')
+            .then(response => response.json())
+            .then(data => {
+                questions = data;
+                shuffle(questions); // Shuffle the questions array
                 displayQuestion(currentQuestionIndex);
+            })
+            .catch(error => {
+                console.error('Error fetching questions:', error);
+                document.getElementById('qs').textContent = 'Failed to load questions.';
+            });
+        
+        // Add event listener to each value element
+        document.querySelectorAll('.value').forEach(value => {
+            value.addEventListener('click', function() {
+                // Remove 'selected-value' class from all values
+                document.querySelectorAll('.value').forEach(v => {
+                    v.classList.remove('selected-value');
+                });
+                // Add 'selected-value' class to the clicked value
+                this.classList.add('selected-value');
             });
         });
-    </script>
+        
+// Define the insertUserInput function
+function insertUserInput(value, questionIndex, userId, questionId) {
+    fetch('/api/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ value, questionIndex, userId, questionId })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Check the response from the server if needed
+        // For now, just move to the next question
+        currentQuestionIndex++;
+        displayQuestion(currentQuestionIndex);
+    })
+    .catch(error => {
+        console.error('Error submitting value:', error);
+    });
+}
+    
+        // Add event listener for the "Next" button click
+document.getElementById('next').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+    
+    // Find the selected value
+    const selectedValue = document.querySelector('.selected-value');
+    if (selectedValue) {
+        const value = selectedValue.textContent;
+        const questionIndex = currentQuestionIndex;
+        const questionId = questions[currentQuestionIndex].question_id; // Retrieve the question ID
+        
+        // Call the insertUserInput function with the selected value, question index, user ID, and question ID
+        insertUserInput(value, questionIndex, userId, questionId);
+    } else {
+        console.log('Please select a value before moving to the next question.');
+    }
+});
+
+    });
+</script>
+
+        
+        
+        
 </body>
 </html>

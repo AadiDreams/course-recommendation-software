@@ -98,22 +98,22 @@ app.get('/api/questions', (req, res) => {
 
 
 
-app.post('/api/submit', (req, res) => {
-  const { firebaseUserId, questionId, rating } = req.body;
+// app.post('/api/submit', (req, res) => {
+//   const { firebaseUserId, questionId, rating } = req.body;
 
-  pool.query(
-      'INSERT INTO responses (firebase_user_id, question_id, rating) VALUES ($1, $2, $3)',
-      [firebaseUserId, questionId, rating],
-      (err, result) => {
-          if (err) {
-              console.error('Error executing query', err.stack);
-              res.status(500).send('Error saving response');
-          } else {
-              res.json({ success: true });
-          }
-      }
-  );
-});
+//   pool.query(
+//       'INSERT INTO responses (firebase_user_id, question_id, rating) VALUES ($1, $2, $3)',
+//       [firebaseUserId, questionId, rating],
+//       (err, result) => {
+//           if (err) {
+//               console.error('Error executing query', err.stack);
+//               res.status(500).send('Error saving response');
+//           } else {
+//               res.json({ success: true });
+//           }
+//       }
+//   );
+// });
 
 
 

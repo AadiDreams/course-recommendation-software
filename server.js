@@ -85,7 +85,8 @@ app.get('/userHome', (req, res) => {
 //   }
 // });
 
-// New endpoint to get questions
+
+// Endpoint to get questions
 app.get('/api/questions', (req, res) => {
   pool.query('SELECT question_id, question FROM expected', (err, result) => {
       if (err) {
@@ -96,43 +97,100 @@ app.get('/api/questions', (req, res) => {
   });
 });
 
+// Define a function to insert user input and update other column values
+async function insertAndUpdateUserInput(userId, questionId, userInput) {
+  const client = await pool.connect();
+  try {
+      await client.query('BEGIN');
+      
+      // Insert the user input into the uservalue table
+      await client.query('INSERT INTO uservalue (userid, questionid, userinput) VALUES ($1, $2, $3)', [userId, questionId, userInput]);
+      
+      // Fetch the expected values for the question
+      const result = await client.query('SELECT * FROM expected WHERE question_id = $1', [questionId]);
+      const expectedValues = result.rows[0];
 
-// Define a function to insert user input into the database
-function insertUserInput(userId, questionIndex, value) {
-  return new Promise((resolve, reject) => {
-      // Perform the database query to insert user input
-      pool.query('INSERT INTO uservalue (userid, questionid, userinput) VALUES ($1, $2, $3)', [userId, questionIndex, value], (err, result) => {
-          if (err) {
-              console.error('Error inserting user input:', err.stack);
-              reject(err);
-          } else {
-              resolve();
+      // Prepare the SQL for updating other columns
+      const updateQueries = [];
+      for (const column in expectedValues) {
+          if (column !== 'question_id' && column !== 'question') {
+              const expectedValue = expectedValues[column];
+              const updatedValue = expectedValue * userInput;
+              const quotedColumn = `"${column}"`;
+              updateQueries.push(client.query(`UPDATE uservalue SET ${quotedColumn} = $1 WHERE userid = $2 AND questionid = $3`, [updatedValue, userId, questionId]));
           }
-      });
-  });
+      }
+      
+      // Execute all update queries
+      await Promise.all(updateQueries);
+
+      await client.query('COMMIT');
+  } catch (error) {
+      await client.query('ROLLBACK');
+      throw error;
+  } finally {
+      client.release();
+  }
 }
 
-
-
-// Assuming this is the endpoint for submitting user input
-app.post('/api/submit', (req, res) => {
-  // Hardcode the user_id
-  const userId = 101;
-
-  // Extract the user input data from the request body
+// Endpoint to handle user input submission
+app.post('/api/submit', async (req, res) => {
+  const userId = 101; // Hardcoded user_id for now
   const { questionId, value } = req.body;
 
-  // Assuming you have a function to insert data into the database
-  insertUserInput(userId, questionId, value)
-      .then(() => {
-          // Send a success response if the insertion is successful
-          res.json({ success: true });
-      })
-      .catch(error => {
-          // Handle errors appropriately
-          console.error('Error inserting user input:', error);
-          res.status(500).json({ error: 'Internal server error' });
-      });
+  try {
+      await insertAndUpdateUserInput(userId, questionId, value);
+      res.json({ success: true });
+  } catch (error) {
+      console.error('Error inserting user input:', error);
+      res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
+app.get('/api/bestCourse', async (req, res) => {
+  const userId = 101; // Hardcoded user_id for now
+
+  try {
+      const client = await pool.connect();
+
+      console.log("Calculating best course for user:", userId); // Debugging log
+      // Get the sums of each column for the given user
+      const result = await client.query(`
+          SELECT 
+              SUM("Computer Science Engineering") AS "Computer Science Engineering",
+              SUM("Mechanical Engineering") AS "Mechanical Engineering",
+              SUM("Electronics and Communication Engineering") AS "Electronics and Communication Engineering",
+              SUM("Electrical Engineering") AS "Electrical Engineering",
+              SUM("Electrical and Electronics Engineering") AS "Electrical and Electronics Engineering",
+              SUM("Civil Engineering") AS "Civil Engineering",
+              SUM("Chemical Engineering") AS "Chemical Engineering",
+              SUM("Information Technology") AS "Information Technology"
+          FROM uservalue
+          WHERE userid = $1
+      `, [userId]);
+
+      client.release();
+
+      const sums = result.rows[0];
+      let bestCourse = null;
+      let highestSum = -Infinity;
+
+      // Identify the column with the highest sum
+      for (const column in sums) {
+          if (sums[column] > highestSum) {
+              highestSum = sums[column];
+              bestCourse = column;
+          }
+      }
+
+
+      console.log("Best course identified:", bestCourse);
+      res.json({ bestCourse });
+  } catch (error) {
+      console.error('Error calculating best course:', error);
+      res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 

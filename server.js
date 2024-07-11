@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const PORT = process.env.PORT || 3000;
+const fs = require('fs');
+const { promisify } = require('util');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json()); // Parse JSON bodies
@@ -11,9 +13,9 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 // Routes
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+// app.get('/', (req, res) => {
+//     res.send('Hello World!');
+// });
 
 // app.listen(PORT, () => {
 //     console.log(`Server is running on port ${PORT}`);
@@ -27,16 +29,17 @@ const pool = new Pool({
     database: 'careercraft',
     password: 'ccadmin',
     port: 5432,
+
 });
 
-// Example query
-pool.query('SELECT count(*) FROM qs', (err, result) => {
-    if (err) {
-        return console.error('Error executing query', err.stack);
-    }
-    console.log(result.rows);
-    // Process your results here
-});
+// // Example query
+// pool.query('SELECT count(*) FROM qs', (err, result) => {
+//     if (err) {
+//         return console.error('Error executing query', err.stack);
+//     }
+//     console.log(result.rows);
+//     // Process your results here
+// });
 
 
 // Serve index.html when the server starts
@@ -68,22 +71,23 @@ app.get('/userHome', (req, res) => {
   res.sendFile(path.join(__dirname, "public/signed.html"));
 });
 
-// // Handle login POST request
-// app.post('/login', (req, res) => {
-//   // Extract username and password from request body
-//   console.log(req.body);
-//   const { username, password } = req.body;
-//   console.log(res);
-//   // Here you can validate the username and password
-//   // For now, let's just send a response based on whether they are provided or not
-//   if (username && password) {
-//       res.status(200).send(`Received username: ${username}, password: ${password}`);
-//   } else {
-//       console.log(req.body);
-//       res.status(400).send(`Username, password not wokring: ${username}, password: ${password}`);
+// Load the machine learning model
+let model;
+fs.readFile('question_model.pkl', async (err, data) => {
+    if (err) throw err;
+});
 
-//   }
-// });
+// Prediction endpoint
+app.post('/api/predict', (req, res) => {
+    const { question_id, response } = req.body;
+
+    if (!model) {
+        return res.status(500).json({ error: 'Model not loaded' });
+    }
+
+    const prediction = model.predict([[question_id, response]]);
+    res.json({ next_question_id: prediction[0] });
+});
 
 
 // Endpoint to get questions

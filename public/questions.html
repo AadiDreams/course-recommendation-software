@@ -8,17 +8,17 @@
     <link rel="stylesheet" type="text/css" href="./style.css">
     <style>
         li,a {
-            font-weight:700;
-            color:#273238;
+            font-weight: 700;
+            color: #273238;
             text-decoration: none;
             transition: all 0.3s ease 0s;
         }
         a:hover, h1 span {
             color: #3bc4a1;
         }
-        /* .header {
-            background-image: url(./assets/bggif.gif);
-        } */
+        .header {
+            /* background-image: url(./assets/bggif.gif); */
+        }
         .qa {
             width: 100%;
             height: 100%;
@@ -30,7 +30,7 @@
             gap: 30px;
         }
         .value {
-            height:40px;
+            height: 40px;
             width: 40px;
             border: 1px solid #273238;
             transition: all .5s ease-in-out;
@@ -41,12 +41,12 @@
             justify-content: center;
             align-items: center;
         }
-        input[type="submit"]{
+        input[type="submit"] {
             height: 50px;
             width: 100px;
-            color: #000;
+            color: #fff;
             background-color: #fff;
-            border: 1px solid #000;
+            border: 1px solid #fff;
             border-radius: 30px;
             transition: all .5s ease-in-out;
         }
@@ -103,9 +103,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             let questions = [];
             let currentQuestionIndex = 0;
-            const userId = 101; // Replace with the actual user ID
+            const userId = 101; 
         
-            // Function to shuffle the array (Fisher-Yates shuffle)
             function shuffle(array) {
                 for (let i = array.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
@@ -117,6 +116,9 @@
                 const questionElement = document.getElementById('qs');
                 if (index < questions.length) {
                     questionElement.textContent = questions[index].question;
+                    document.querySelectorAll('.value').forEach(v => {
+                        v.classList.remove('selected-value');
+                    });
                 } else {
                     getBestCourse();
                 }
@@ -126,7 +128,7 @@
                 .then(response => response.json())
                 .then(data => {
                     questions = data;
-                    shuffle(questions); // Shuffle the questions array
+                    shuffle(questions);
                     displayQuestion(currentQuestionIndex);
                 })
                 .catch(error => {
@@ -171,7 +173,7 @@
                 if (selectedValue) {
                     const value = selectedValue.textContent;
                     const questionIndex = currentQuestionIndex;
-                    const questionId = questions[currentQuestionIndex].question_id; // Retrieve the question ID
+                    const questionId = questions[currentQuestionIndex].question_id;
                     
                     insertUserInput(value, questionIndex, userId, questionId);
                 } else {
@@ -185,6 +187,9 @@
                     .then(data => {
                         const bestCourseElement = document.getElementById('best-course');
                         bestCourseElement.textContent = `Your best course is: ${data.bestCourse}`;
+
+                        document.querySelector('.header').style.backgroundImage = 'url(./assets/bggif.gif)';
+                        document.querySelector('.qa').style.backgroundImage = 'url(./assets/bggif.gif)';
                     })
                     .catch(error => {
                         console.error('Error fetching best course:', error);
@@ -193,10 +198,6 @@
                     });
             }
         });
-        </script>
-
-        
-        
-        
+    </script>
 </body>
 </html>

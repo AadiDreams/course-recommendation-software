@@ -27,7 +27,7 @@
                     <button type="submit" class="reg">create account</button>
                 </form>
                 <br><br>
-                <a href=#><u>Forgot password?</u></a>
+                <label id="forgotpasslabel" style="cursor:pointer;">Forgot password?</label>
                 <br><br>
             </div>
         </div>
@@ -35,10 +35,10 @@
     <div class="left">
         <img src="./assets/log.jpg">
     </div>
-    <!-- Include log.js script directly in HTML -->
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+        import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAGnHliNxthPiirMurAyoo23mJsb7GOYD0",
@@ -70,6 +70,20 @@
                     alert(errorMessage);
                 });
         });
+
+        let ForgotPassLabel = document.getElementById('forgotpasslabel');
+        let ForgotPassword = ()=>{
+            const email = document.getElementById('email').value;
+            sendPasswordResetEmail(auth, email)
+            .then(()=>{
+                alert("A Password Reset Link has been sent to your email");
+            })
+            .catch((error)=>{
+                console.log(error.code);
+                console.log(error.message);
+            })
+        }
+        ForgotPassLabel.addEventListener('click', ForgotPassword);
     </script>
 </body>
 </html>

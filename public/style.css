@@ -164,7 +164,7 @@ textarea {
   border-radius: 5px;
   padding:5px;
 }
-input[type="submit"] {
+input[type="submit"], .sendbtn {
   height:30px;
   width:150px;
   color:#fff;

@@ -7,104 +7,160 @@
     <link rel="stylesheet" type="text/css" href="./style.css">
     <title>Career Craft</title>
     <style>
-        li,a {
-            font-weight:700;
-            color:#273238;
+        li, a {
+            font-weight: 700;
+            color: #273238;
             text-decoration: none;
             transition: all 0.3s ease 0s;
         }
         a:hover, h1 span {
             color: #3bc4a1;
         }
-
-        
+        .card-ft {
+            text-align: justify;
+            margin-top: 50px;
+        }
+        .contact-head {
+            height: 100px;
+            margin: 50px 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #3bc4a1;
+            color: #fff;
+            font-weight: 900;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
-    <div class="header">
+    <div class="header" id="home">
         <h2 class="logo">Career <span>Craft</span></h2>
         <nav>
             <ul class="nav-links">
-                <li><a href="./signed.html">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">FAQ</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#feature">Features</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
         <form id="logout" action="/logout" method="get">
-          <button type="submit" class="sign-button">Sign Out</button>
+            <button type="submit" class="sign-button">Sign Out</button>
         </form>
     </div>
     <div class="main">
-        <h1 class="left"><span>Welcome!</span> to AI Powered Engineering Course Recommendation Software</h1>
+        <h1 class="left"><span>Welcome! to CareerCraft</span><br>Engineering Course Recommendation Software</h1>
         <br>
         <p class="left-para">Charting the right engineering course is a crucial decision with significant impact on a student's future career trajectory. Yet, navigating the plethora of options can be daunting, leaving them uncertain about the perfect fit for their individual strengths, interests, and aspirations.</p>
         <p class="left-para">To bridge this gap, here we introduce <span>Career Craft</span> to empower students with informed career choices perfectly aligned with their unique personality and preferences.</p>
         <br><br>
         <form action="/questions" method="get">
-          <button class="st-btn">Start</button>
+            <button class="st-btn">Start</button>
         </form>
     </div>
     <div id="about">
         <div class="abt-head">
             <h1>Choose the Career Right to You</h1>
             <br>
-            <p style="color:#808080;">Match your passion to the perfect engineering path.</p>
+            <p style="color: #808080;">Match your passion to the perfect engineering path.</p>
             <br>
         </div>
         <div class="hero">
-          <embed src="./assets/hero.gif" class="hero-v" alt="gif"/>
+            <embed src="./assets/hero.gif" class="hero-v" alt="gif"/>
         </div>
         <br><br>
         <div class="explore-btn">
-          <form action="/questions" method="get">
-            <button class="st-btn">Explore now &nbsp;&nbsp; <img src="./assets/arw.png" height="15px"></button>
-          </form>
+            <form id="signinForm" action="/signIn" method="get">
+                <button type="submit" class="st-btn">Explore now &nbsp;&nbsp; <img src="./assets/arw.png" height="15px"></button>
+            </form>
         </div>
     </div>
     <div class="feature" id="feature">
-      <h1>Our Features</h1>
-      <br><br><br>
-      <div class="card">
-        <img src="./assets/f1.jpg" class="ft-img"/>
-        <div class="card-ft">
-          <h2>Personalized Recommendations</h2>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure molestias, quod excepturi eaque reiciendis explicabo tenetur voluptas.</p>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure molestias, quod excepturi eaque reiciendis explicabo tenetur voluptas.</p>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure molestias, quod excepturi eaque reiciendis explicabo tenetur voluptas.</p>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure molestias, quod excepturi eaque reiciendis explicabo tenetur voluptas.</p>
+        <h1>Our Features</h1>
+        <br><br><br>
+        <div class="card">
+            <img src="./assets/f1.jpg" class="ft-img"/>
+            <div class="card-ft">
+                <h2>Personalized Recommendations</h2>
+                <p>Ditch generic advice! We use cutting-edge Artificial Intelligence to analyze your skills, interests, and learning style, providing tailored career matches that perfectly suit you. Don't settle for a one-size-fits-all approach to your career. Our AI technology goes beyond generic recommendations. We take the time to understand you as an individual.</p>
+            </div>
         </div>
-      </div>
-      <br><br>
-      <br><br><br><br>
-      <div class="card">
-        
-        <div class="card-ft">
-          <h2>Effortless Exploration</h2>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure molestias, quod excepturi eaque reiciendis explicabo tenetur voluptas.</p>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure molestias, quod excepturi eaque reiciendis explicabo tenetur voluptas.</p>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure molestias, quod excepturi eaque reiciendis explicabo tenetur voluptas.</p>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure molestias, quod excepturi eaque reiciendis explicabo tenetur voluptas.</p>
+        <br><br>
+        <br><br><br><br>
+        <div class="card">
+            <div class="card-ft">
+                <h2>Effortless Exploration</h2>
+                <p>Forget about complex interfaces that leave you feeling lost in a maze of menus. Our user-friendly platform is designed with you in mind. Exploring careers is a breeze thanks to our intuitive layout and clear navigation. This lets you focus on the exciting possibilities that await you, not wrestling with confusing technology. Spend less time deciphering menus and more time uncovering your dream career path.</p>
+            </div>
+            <img src="./assets/f2.jpg" class="ft-img"/>
         </div>
-        <img src="./assets/f2.jpg" class="ft-img"/>
-      </div>
-      <br><br>
-      <br><br><br><br>
-      <div class="card">
-        <img src="./assets/f3.jpg" class="ft-img"/>
-        <div class="card-ft">
-          <h2>Data-Driven Guidance</h2>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure molestias, quod excepturi eaque reiciendis explicabo tenetur voluptas.</p>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure molestias, quod excepturi eaque reiciendis explicabo tenetur voluptas.</p>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure molestias, quod excepturi eaque reiciendis explicabo tenetur voluptas.</p>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure molestias, quod excepturi eaque reiciendis explicabo tenetur voluptas.</p>
+        <br><br>
+        <br><br><br><br>
+        <div class="card">
+            <img src="./assets/f3.jpg" class="ft-img"/>
+            <div class="card-ft">
+                <h2>Data-Driven Guidance</h2>
+                <p>Ditch the guesswork! Our recommendations aren't based on hunches or outdated information. We leverage the power of data-driven guidance. Get matched with careers that are not only a good fit for you but also have a strong track record of success in the current job market. Our data-driven approach ensures your career exploration is grounded in reality, setting you up for long-term professional fulfillment.</p>
+            </div>
         </div>
-      </div>
+        <div class="card contact-head" id="contact">
+            <h1>Contact Us</h1>
+        </div>
+        <div class="contact">
+            <form id="contactForm">
+                <label for="name">Name &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" id="name" name="name" placeholder="enter your name" required>
+                </label><br><br>
+                <label for="contact_no">Contact &nbsp;&nbsp;
+                    <input type="text" id="contact_no" name="contact_no" placeholder="enter your number" required>
+                </label><br><br>
+                <label for="email">Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" id="email" name="email" placeholder="enter your email" required>
+                </label><br><br>
+                <label for="subject">Subject &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" id="subject" name="subject" placeholder="enter the subject"required>
+                </label><br><br>
+                <label for="feedback">Message
+                    <textarea id="feedback" name="feedback" placeholder="enter your feedback" required></textarea>
+                </label><br><br><br>
+                <button type="submit" class="sendbtn">Send</button>
+            </form>
+        </div>
     </div>
-    <br>
     <footer>
-       &copy; Copyright 2024
+        &copy; Copyright 2024
     </footer>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        const form = document.getElementById("contactForm");
+        const name = document.getElementById("name");
+        const contact = document.getElementById("contact_no");
+        const email = document.getElementById("email");
+        const subject = document.getElementById("subject");
+        const feedback = document.getElementById("feedback");
+
+        function sendEmail() {
+        const bodyMessage = `Name: ${name.value}<br> Contact: ${contact.value}<br> Email: ${email.value}<br> Message: ${feedback.value}`;
+        Email.send({
+            Host: "smtp.elasticemail.com",
+            Username: "aadithyadreams@gmail.com",
+            Password: "95F85ADB30659963B503BAD6993B6EDA3B5F",
+            To: 'aadithyadreams@gmail.com',
+            From: "aadithyadreams@gmail.com",
+            Subject: subject.value,
+            Body: bodyMessage
+        }).then(
+            message => alert("Message Send")
+        ).catch(
+            error => console.error("Failed to send email:", error)
+        );
+    }
+
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            sendEmail();
+        });
+    </script>
 </body>
 </html>

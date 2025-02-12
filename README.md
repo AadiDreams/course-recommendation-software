@@ -18,3 +18,5 @@ Front-end: HTML, CSS, JavaScript
 Back-end: Node.js, Express.js, Firebase
 <br>
 Database: PostgreSQL
+DFD:
+![1000056758](https://github.com/user-attachments/assets/9b6fe089-0174-4d26-80d1-ccdd6dff71a4)

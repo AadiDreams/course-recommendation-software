@@ -1,5 +1,5 @@
 # course-recommendation-software
-[CareerCraft](https://aadidreams.github.io/course-recommendation-software/public/index.html) - A Course Recommendation Software  for Personalized Career Guidance with AI-Powered Insights
+[CareerCraft]([https://aadidreams.github.io/course-recommendation-software/public/index.html](https://drive.google.com/file/d/1MwVWLzhNNkzr7tWf92HvnhIJzx8alC_j/view?usp=sharing)) - A Course Recommendation Software  for Personalized Career Guidance with AI-Powered Insights
 > Charting the right engineering course is a crucial decision with 
 significant impact on a student's future career trajectory. Yet, navigating 
 the plethora of options can be daunting, leaving them uncertain about the 
@@ -22,4 +22,5 @@ Database: PostgreSQL
 DFD:
 <br>
 ![1000056758](https://github.com/user-attachments/assets/93f4b51f-2c6b-4316-ba24-48a9f0f8388f)
-
+<br>
+[For working sample click here]([https://aadidreams.github.io/course-recommendation-software/public/index.html](https://drive.google.com/file/d/1MwVWLzhNNkzr7tWf92HvnhIJzx8alC_j/view?usp=sharing))

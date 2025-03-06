@@ -107,17 +107,62 @@
       
       <div class="card contact-head" id="contact">
         <h1>Contact Us</h1>
-      </div>
-
-      <div class="contact">
-        <br>
-        <h2>Mini Project - Group 8</h2>
-        <br>
-        <br>
-      </div>
     </div>
-    <footer>
-       &copy; Copyright 2024
-    </footer>
+    <div class="contact">
+        <form id="contactForm">
+            <label for="name">Name &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" id="name" name="name" placeholder="enter your name" required>
+            </label><br><br>
+            <label for="contact_no">Contact &nbsp;&nbsp;
+                <input type="text" id="contact_no" name="contact_no" placeholder="enter your number" required>
+            </label><br><br>
+            <label for="email">Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" id="email" name="email" placeholder="enter your email" required>
+            </label><br><br>
+            <label for="subject">Subject &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" id="subject" name="subject" placeholder="enter the subject"required>
+            </label><br><br>
+            <label for="feedback">Message
+                <textarea id="feedback" name="feedback" placeholder="enter your feedback" required></textarea>
+            </label><br><br><br>
+            <button type="submit" class="sendbtn">Send</button>
+        </form>
+    </div>
+</div>
+<footer>
+    &copy; Copyright 2024
+</footer>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+    const form = document.getElementById("contactForm");
+    const name = document.getElementById("name");
+    const contact = document.getElementById("contact_no");
+    const email = document.getElementById("email");
+    const subject = document.getElementById("subject");
+    const feedback = document.getElementById("feedback");
+
+    function sendEmail() {
+    const bodyMessage = `Name: ${name.value}<br> Contact: ${contact.value}<br> Email: ${email.value}<br> Message: ${feedback.value}`;
+    Email.send({
+        Host: "smtp.elasticemail.com",
+        Username: "aadithyadreams@gmail.com",
+        Password: "95F85ADB30659963B503BAD6993B6EDA3B5F",
+        To: 'aadithyadreams@gmail.com',
+        From: "aadithyadreams@gmail.com",
+        Subject: subject.value,
+        Body: bodyMessage
+    }).then(
+        message => alert("Message Send")
+    ).catch(
+        error => console.error("Failed to send email:", error)
+    );
+}
+
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        sendEmail();
+    });
+</script>
 </body>
 </html>

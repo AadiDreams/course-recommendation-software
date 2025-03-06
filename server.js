@@ -158,7 +158,7 @@ app.get('/api/bestCourse', async (req, res) => {
   try {
       const client = await pool.connect();
 
-      console.log("Calculating best course for user:", userId); // Debugging log
+      // console.log("Calculating best course for user:", userId); // Debugging log
       // Get the sums of each column for the given user
       const result = await client.query(`
           SELECT 
